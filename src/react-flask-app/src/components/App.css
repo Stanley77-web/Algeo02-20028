@@ -1,0 +1,12 @@
+.all-page {
+  position: relative;
+  width: 690px;
+  margin: 15px auto;
+  margin-top: 30px;
+  padding: 10px 30px 15px 30px;
+  background: #eee;
+  border: 2px solid #999;
+  border-radius: 8px;
+  text-align: left;
+  min-height: 500px;
+}
