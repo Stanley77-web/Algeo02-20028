@@ -6,8 +6,8 @@ import sys
 import os
 
 
-def CompressSVD(channelDataMatrix, k):
-    U, S, VT = SVD(channelDataMatrix, channelDataMatrix.shape[0])
+def CompressSVD(channelDataMatrix, k, total_k):
+    U, S, VT = SVD(channelDataMatrix, total_k)
     A = U[:, 0:k] @ S[0:k, 0:k] @ VT[0:k, :]
     compressed = np.clip(A, 0, 255).astype('uint8')
     return compressed
@@ -78,9 +78,9 @@ def mainCompress():
     total_k = min(imageHeight, imageWidth)
     k = round(total_k * ratio / 100)
 
-    redCompressed = CompressSVD(red, k)
-    greenCompressed = CompressSVD(green, k)
-    blueCompressed = CompressSVD(blue, k)
+    redCompressed = CompressSVD(red, k, total_k)
+    greenCompressed = CompressSVD(green, k, total_k)
+    blueCompressed = CompressSVD(blue, k, total_k)
     redImage = Image.fromarray(redCompressed)
     blueImage = Image.fromarray(blueCompressed)
     greenImage = Image.fromarray(greenCompressed)
