@@ -2,6 +2,8 @@ import numpy as np
 import numpy.linalg
 from PIL import Image
 from datetime import datetime
+import sys
+import os
 
 
 def CompressSVD(channelDataMatrix, k):
@@ -45,12 +47,16 @@ def SVD(array, k):
 # PROGRAM UTAMA
 def mainCompress():
     startTime = datetime.now()
-    path = str(input("Masukkan nama file: "))
+    file = str(input("Masukkan nama file: "))
     ratio = float(input("Masukkan rasio: "))
     # path = 'wat.png'
     # ratio = 5
+    sys_path = sys.path[0]
 
-    pic = Image.open(path).convert('RGBA')
+    load_path = "../../test/testgambar/" + file
+    path = os.path.join(sys_path, load_path)
+
+    pic = Image.open(path).convert("RGBA")
     pixel = np.array(pic)
     imageWidth = pixel.shape[0]
     imageHeight = pixel.shape[1]
@@ -69,9 +75,12 @@ def mainCompress():
     greenImage = Image.fromarray(greenCompressed)
 
     newImage = Image.merge("RGBA", (redImage, greenImage, blueImage, alpha))
-    newImage.save('new.png')
-    print('Besaran:  ' + str(round(ratio, 2)) + '% dari gambar original ')
-    print(datetime.now() - startTime)
+    save_path = "../../test/testgambar/" + "converted.png"
+    path = os.path.join(sys_path, save_path)
+    newImage.save(path)
+    print("Besaran:  " + str(round(ratio, 2)) + "% dari gambar original ")
+    time = datetime.now() - startTime
+    print(f"{time.total_seconds():.0f} Seconds")
 
 
 # Menjalankan Program
