@@ -13,34 +13,44 @@ def CompressSVD(channelDataMatrix, k):
     return compressed
 
 
-def SVD(array, k):
-    b, k = array.shape
+def SVD(matrix, k):
+    b, k = matrix.shape
+    # Jika jumlah baris matrix < jumlah kolom matrix
     if(b <= k):
-        A = array @ array.T
+        A = matrix @ matrix.T
         n = b
+    # Jika jumlah baris matrix > jumlah kolom matrix
     elif(b > k):
-        A = array.T @ array
+        A = matrix.T @ matrix
         n = k
+    # Menggunakan skema simultaneous power iteration
     Q = np.random.rand(n, k)
     Q, _ = np.linalg.qr(Q)
     for i in range(200):
         Z = A.dot(Q)
         Q, R = np.linalg.qr(Z)
+    # Mengambil nilai egeinvalue dari matriks R dengan terlebih dahulu
+    #   membuat nilai matriks tersebut absolut agar tidak error lalu
+    #   mengambil nilai diagonal matriks tersebut kemudian diakarkan
     diag = np.sqrt(np.abs(np.diag(R)))
+    # Membuat nilai eigenvalue 0 menjadi 0.1 agar membuat
+    #   matriks untuk memiliki invers
     for i in range(diag.shape[0]):
         if diag[i] < 1:
             diag[i] = 0.1
-    S = np.diag(diag)
+    S = np.diag(diag)  # Membuat matriks persegi dari nilai diagonal eigenvalue
+    # Mendapatkan matriks singular kiri/kanan dengan persamaan invers
+    #   tergantung pada ukuran matrix awal
     if(b <= k):
         U = Q
         US = U @ S
         inv = np.linalg.inv(US)
-        VT = inv @ array
+        VT = inv @ matrix
     elif(b > k):
         VT = Q.T
         SVT = S @ VT
         inv = np.linalg.inv(SVT)
-        U = array @ inv
+        U = matrix @ inv
     return U, S, VT
 
 
