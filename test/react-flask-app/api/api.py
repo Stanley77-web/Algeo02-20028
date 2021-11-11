@@ -46,11 +46,6 @@ def fileUpload():
     response="File Uploaded"
     return response
 
-@app.route('/display/<filename>')
-def display_image(filename):
-	#print('display_image filename: ' + filename)
-	return redirect(url_for('static', filename='uploads/' + filename), code=301)
-
 if __name__ == "__main__":
     app.secret_key = b'BenciTubes2104819'
     app.run(debug=True,host="0.0.0.0",use_reloader=False, port=8000)

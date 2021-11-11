@@ -6,10 +6,16 @@ class FileUpload extends React.Component {
     super(props);
 
     this.state = {
-      imageLink: null,
-    };
-
+      file: blur,
+    }    
+    this.handleChange = this.handleChange.bind(this)
     this.handleUploadImage = this.handleUploadImage.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      file: URL.createObjectURL(event.target.files[0])
+    })
   }
 
   handleUploadImage(ev) {
@@ -25,11 +31,11 @@ class FileUpload extends React.Component {
         method: 'POST',
         body: data,
       })
-      .then((response) => {
-        response.json().then((body) => {
-          this.setState({ imageLink: URL.createObjectURL(this.uploadInput.files[0])});
-        });
-      });
+      // .then((response) => {
+      //   response.json().then((body) => {
+      //     this.setState({ imageLink: URL.createObjectURL(this.uploadInput.files[0])});
+      //   });
+      // });
     }
   }
 
@@ -38,15 +44,21 @@ class FileUpload extends React.Component {
       <div>
         <form onSubmit={this.handleUploadImage} class="container">
           <div>
-            <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
+            <input ref={(ref) => { this.uploadInput = ref; }} type="file" onChange={this.handleChange}/>
           </div>
           <div>
             <button>Upload</button>
           </div>
-          <img src="{{ url_for('display_image', filename='bg.png') }}" alt="img" />
         </form>
         <div class="container">
-         <img src={this.state.imageLink} alt="img2"></img>
+          <div class="imageBox">
+            <h3> Before </h3>
+            <img src={this.state.file} alt="beforeIMG"></img>
+          </div>
+          <div class="imageBox">
+            <h3> After </h3>
+            <img src={blur} alt="afterIMG"></img>
+          </div>
         </div>
       </div>
 
