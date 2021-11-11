@@ -76,7 +76,8 @@ def mainCompress():
     alpha = pic.getchannel('A')
 
     total_k = min(imageHeight, imageWidth)
-    k = round(total_k * ratio / 100)
+    new_ratio = 100 - ratio
+    k = round(total_k * new_ratio / 100)
 
     redCompressed = CompressSVD(red, k, total_k)
     greenCompressed = CompressSVD(green, k, total_k)
@@ -89,7 +90,7 @@ def mainCompress():
     save_path = "../../test/testgambar/" + "converted.png"
     path = os.path.join(sys_path, save_path)
     newImage.save(path)
-    print("Besaran: " + str(round(ratio, 2)) + "% dari gambar original ")
+    print("Compression Rate: " + str(round(ratio, 2)))
     time = datetime.now() - startTime
     print(f"{time.total_seconds():.0f} Seconds")
 
