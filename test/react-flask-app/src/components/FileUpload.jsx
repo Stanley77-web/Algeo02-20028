@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
+import blur from "./static/blurred.png";
 class FileUpload extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      imageURL: '',
+      imageLink: '',
     };
 
     this.handleUploadImage = this.handleUploadImage.bind(this);
@@ -16,29 +17,37 @@ class FileUpload extends React.Component {
 
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
-    data.append('filename', "useless"); // idk how to delete this ill just let it be
-
+    data.append('filename', "image"); // idk how to delete this ill just let it be
+    const objectURL = window.URL.createObjectURL(this.uploadInput.files[0]);
+    
     fetch('http://127.0.0.1:5000/upload', {
       method: 'POST',
       body: data,
-    }).then((response) => {
+    })
+    .then((response) => {
       response.json().then((body) => {
-        this.setState({ imageURL: `http://localhost:3000/${body.file}` });
+        this.setState({ imageLink: {objectURL} });
       });
     });
   }
 
   render() {
     return (
-      <form onSubmit={this.handleUploadImage}>
-        <div>
-          <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
+      <div>
+        <form onSubmit={this.handleUploadImage} class="container">
+          <div>
+            <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
+          </div>
+          <div>
+            <button>Upload</button>
+          </div>
+          <img src="{{ url_for('display_image', filename='bg.png') }}" alt="img" />
+        </form>
+        <div class="container">
+         {/* <img src={} alt="img"></img> */}
         </div>
-        <div>
-          <button>Upload</button>
-        </div>
-        {/* <img src="{{ url_for('display_image', filename='bg.png') }}" alt="img" /> */}
-      </form>
+      </div>
+
     );
   }
 }

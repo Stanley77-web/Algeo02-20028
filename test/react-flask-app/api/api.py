@@ -9,8 +9,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('API Called')
 
 
-UPLOAD_FOLDER = '../src/user_uploaded'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+UPLOAD_FOLDER = '../src/components/static/user_uploaded'
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -43,16 +43,16 @@ def fileUpload():
     destination="/".join([target, filename])
     file.save(destination)
     session['uploadFilePath']=destination
-    response="Whatever you wish too return"
+    response="File Uploaded"
     return response
 
 @app.route('/display/<filename>')
 def display_image(filename):
 	#print('display_image filename: ' + filename)
-	return redirect(url_for('src', filename='uploads/' + filename), code=301)
+	return redirect(url_for('static', filename='uploads/' + filename), code=301)
 
 if __name__ == "__main__":
     app.secret_key = b'BenciTubes2104819'
-    app.run(debug=True,host="0.0.0.0",use_reloader=False)
+    app.run(debug=True,host="0.0.0.0",use_reloader=False, port=8000)
 
 CORS(app, expose_headers='Authorization')
