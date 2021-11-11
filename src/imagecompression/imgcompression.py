@@ -66,14 +66,17 @@ def mainCompress():
     load_path = "../../test/testgambar/" + file
     path = os.path.join(sys_path, load_path)
 
-    pic = Image.open(path).convert("RGBA")
+    pic = Image.open(path)
+    fileFormat = pic.format
+    if(fileFormat != "JPEG"):
+        pic = pic.convert("RGBA")
+        alpha = pic.getchannel('A')
     pixel = np.array(pic)
     imageWidth = pixel.shape[0]
     imageHeight = pixel.shape[1]
     red = np.asarray(pic.getchannel('R')).astype(float)
     green = np.asarray(pic.getchannel('G')).astype(float)
     blue = np.asarray(pic.getchannel('B')).astype(float)
-    alpha = pic.getchannel('A')
 
     total_k = min(imageHeight, imageWidth)
     new_ratio = 100 - ratio
@@ -82,15 +85,21 @@ def mainCompress():
     redCompressed = CompressSVD(red, k, total_k)
     greenCompressed = CompressSVD(green, k, total_k)
     blueCompressed = CompressSVD(blue, k, total_k)
+
     redImage = Image.fromarray(redCompressed)
     blueImage = Image.fromarray(blueCompressed)
     greenImage = Image.fromarray(greenCompressed)
 
-    newImage = Image.merge("RGBA", (redImage, greenImage, blueImage, alpha))
-    save_path = "../../test/testgambar/" + "converted.png"
+    if (fileFormat != "JPEG"):
+        newImage = Image.merge(
+            "RGBA", (redImage, greenImage, blueImage, alpha))
+    else:
+        newImage = Image.merge("RGB", (redImage, greenImage, blueImage))
+    save_path = "../../test/testgambar/" + "converted_" + file
     path = os.path.join(sys_path, save_path)
     newImage.save(path)
     print("Compression Rate: " + str(round(ratio, 2)))
+    print(newImage.size)
     time = datetime.now() - startTime
     print(f"{time.total_seconds():.0f} Seconds")
 
