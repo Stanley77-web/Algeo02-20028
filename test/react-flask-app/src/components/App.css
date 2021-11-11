@@ -10,3 +10,22 @@
   text-align: left;
   min-height: 500px;
 }
+
+button {
+  color: rgb(0, 0, 0); font-size: 11px; line-height: 11px; padding: 6px; border-radius: 7px; font-family: Tahoma, Arial, Verdana, Meiryo, "MS Gothic", sans-serif, Lucida Sans; font-weight: normal; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none;border: 2px solid rgb(28, 110, 164); display: inline-block;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-left: 10px;
+}
+
+input {
+  color: rgb(0, 0, 0); font-size: 11px; line-height: 11px; padding: 4px; border-radius: 7px; font-family:Tahoma, Arial, Verdana, Meiryo, "MS Gothic", sans-serif, Lucida Sans; font-weight: normal; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none;border: 2px solid rgb(28, 110, 164); display: inline-block;
+}
+
+.SmolDiv{
+  width: 200px;
+}
+.container {
+  display: flex;
+  margin: 10px;
+}
