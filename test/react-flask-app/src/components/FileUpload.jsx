@@ -7,7 +7,7 @@ class FileUpload extends React.Component {
 
     this.state = {
       file: blur,
-      value: 0,
+      value: 50,
     }    
     this.handleChange = this.handleChange.bind(this)
     this.handleUploadImage = this.handleUploadImage.bind(this);
