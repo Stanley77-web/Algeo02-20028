@@ -25,7 +25,9 @@ class FileUpload extends React.Component {
       file: URL.createObjectURL(event.target.files[0])
     })
   }
-
+  handleCheckbox = Evn => {
+    console.log(Evn.target.value)
+  }
   handleUploadImage(ev) {
     ev.preventDefault();
 
@@ -64,9 +66,13 @@ class FileUpload extends React.Component {
             <div>
             </div>
             <div class="inputLine">
-              <input type="number" id="ratio" name="ratio" min="1" max="100" value={this.state.value} onChange={(event) => {this.handleValueChange(event)}}></input>
-              <input type="range" min="0" max="100" value="50" value={this.state.value} onChange={(event) => {this.handleValueChange(event)}}></input>
+              <input class="value" type="number" id="ratio" name="ratio" min="1" max="100" value={this.state.value} onChange={(event) => {this.handleValueChange(event)}}></input>
+              <input class="slider" type="range" min="0" max="100" value="50" value={this.state.value} onChange={(event) => {this.handleValueChange(event)}}></input>
               <text>{this.state.value}</text>
+            </div>
+            <div class="inputCheck">
+              <input type="checkbox" onChange={this.handleCheckbox} value="true"></input>
+              <text>Check to transparent the background</text>
             </div>
           </form>
         {/* {imageForm} */}
@@ -80,6 +86,9 @@ class FileUpload extends React.Component {
             <img src={blur} alt="afterIMG"></img>
           </div>
         </div>
+        <form>
+          <button>Download</button>
+        </form>
       </div>
 
     );
