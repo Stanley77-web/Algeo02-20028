@@ -11,6 +11,11 @@
   min-height: 500px;
 }
 
+form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 button {
   color: rgb(0, 0, 0); font-size: 11px; line-height: 11px; padding: 6px; border-radius: 7px; font-family: Tahoma, Arial, Verdana, Meiryo, "MS Gothic", sans-serif, Lucida Sans; font-weight: normal; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none;border: 2px solid rgb(28, 110, 164); display: inline-block;
   padding-top: 8px;
@@ -36,4 +41,26 @@ img {
 
 .imageBox{
   min-width: 400px;
+}
+
+.inputLine {
+  min-width: 600px;
+  margin-top: 20px;
+}
+
+#ratio{
+  width: 50px;
+  min-height: 20px;
+}
+
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 200px; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
 }

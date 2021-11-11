@@ -7,9 +7,17 @@ class FileUpload extends React.Component {
 
     this.state = {
       file: blur,
+      value: 0,
     }    
     this.handleChange = this.handleChange.bind(this)
     this.handleUploadImage = this.handleUploadImage.bind(this);
+  }
+
+  handleValueChange(event){
+    const inputValue = event.target.value;
+    this.setState({
+      value: inputValue
+    })
   }
 
   handleChange(event) {
@@ -39,17 +47,29 @@ class FileUpload extends React.Component {
     }
   }
 
+  
+  
   render() {
+    // let imageForm;
+    // imageForm = (
+    // )
+
     return (
       <div>
-        <form onSubmit={this.handleUploadImage} class="container">
-          <div>
-            <input ref={(ref) => { this.uploadInput = ref; }} type="file" onChange={this.handleChange}/>
-          </div>
-          <div>
-            <button>Upload</button>
-          </div>
-        </form>
+          <form onSubmit={this.handleUploadImage} class="container">
+            <div>
+              <input ref={(ref) => { this.uploadInput = ref; }} type="file" onChange={this.handleChange}/>
+              <button>Upload</button>
+            </div>
+            <div>
+            </div>
+            <div class="inputLine">
+              <input type="number" id="ratio" name="ratio" min="1" max="100" value={this.state.value} onChange={(event) => {this.handleValueChange(event)}}></input>
+              <input type="range" min="0" max="100" value="50" value={this.state.value} onChange={(event) => {this.handleValueChange(event)}}></input>
+              <text>{this.state.value}</text>
+            </div>
+          </form>
+        {/* {imageForm} */}
         <div class="container">
           <div class="imageBox">
             <h3> Before </h3>
