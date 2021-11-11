@@ -6,7 +6,7 @@ class FileUpload extends React.Component {
     super(props);
 
     this.state = {
-      imageLink: '',
+      imageLink: null,
     };
 
     this.handleUploadImage = this.handleUploadImage.bind(this);
@@ -18,17 +18,19 @@ class FileUpload extends React.Component {
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
     data.append('filename', "image"); // idk how to delete this ill just let it be
-    const objectURL = window.URL.createObjectURL(this.uploadInput.files[0]);
+    // const objectURL = window.URL.createObjectURL(this.uploadInput.files[0]);
     
-    fetch('http://127.0.0.1:5000/upload', {
-      method: 'POST',
-      body: data,
-    })
-    .then((response) => {
-      response.json().then((body) => {
-        this.setState({ imageLink: {objectURL} });
+    if (this.uploadInput.files[0] !== undefined) {
+      fetch('http://127.0.0.1:5000/upload', {
+        method: 'POST',
+        body: data,
+      })
+      .then((response) => {
+        response.json().then((body) => {
+          this.setState({ imageLink: URL.createObjectURL(this.uploadInput.files[0])});
+        });
       });
-    });
+    }
   }
 
   render() {
@@ -44,7 +46,7 @@ class FileUpload extends React.Component {
           <img src="{{ url_for('display_image', filename='bg.png') }}" alt="img" />
         </form>
         <div class="container">
-         {/* <img src={} alt="img"></img> */}
+         <img src={this.state.imageLink} alt="img2"></img>
         </div>
       </div>
 
