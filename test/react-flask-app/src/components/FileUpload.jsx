@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
 import blur from "./static/blurred.png";
+import test from "./static/user_uploaded/algeo3.jpg";
 class FileUpload extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       file: blur,
+      compressed: blur,
       value: 50,
     }    
     this.handleChange = this.handleChange.bind(this)
@@ -23,29 +25,39 @@ class FileUpload extends React.Component {
   handleChange(event) {
     this.setState({
       file: URL.createObjectURL(event.target.files[0])
+      // compressed: blur
     })
   }
   handleCheckbox = Evn => {
     console.log(Evn.target.value)
   }
-  handleUploadImage(ev) {
+  
+ handleUploadImage(ev) {
     ev.preventDefault();
 
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
-    data.append('filename', "image"); // idk how to delete this ill just let it be
+    data.append('filename', this.uploadInput.files[0].name); // idk how to delete this ill just let it be
+    data.append('ratio', this.state.value);
     // const objectURL = window.URL.createObjectURL(this.uploadInput.files[0]);
     
     if (this.uploadInput.files[0] !== undefined) {
-      fetch('http://127.0.0.1:5000/upload', {
+      const config = {
         method: 'POST',
         body: data,
-      })
-      // .then((response) => {
-      //   response.json().then((body) => {
-      //     this.setState({ imageLink: URL.createObjectURL(this.uploadInput.files[0])});
-      //   });
-      // });
+      }
+      fetch('http://127.0.0.1:5000/upload', config);
+      const postcompressionsrc = 'converted_'.concat(this.uploadInput.files[0].name);
+      this.setState({
+        compressed: process.env.PUBLIC_URL + postcompressionsrc
+      });
+      // .then(() => {
+      //   const postcompressionsrc = "./static/".concat('converted_', this.uploadInput.files[0].name);
+      //   const testImg = require("./static/user_uploaded/algeo3.jpg")
+      //   this.setState({
+      //     compressed: test,
+      //   })
+      // })
     }
   }
 
@@ -63,12 +75,13 @@ class FileUpload extends React.Component {
               <input ref={(ref) => { this.uploadInput = ref; }} type="file" onChange={this.handleChange}/>
               <button>Upload</button>
             </div>
-            <div>
+            <div class="compressionText">
+            <text>Compression Ratio</text>
             </div>
             <div class="inputLine">
-              <input class="value" type="number" id="ratio" name="ratio" min="1" max="100" value={this.state.value} onChange={(event) => {this.handleValueChange(event)}}></input>
               <input class="slider" type="range" min="0" max="100" value="50" value={this.state.value} onChange={(event) => {this.handleValueChange(event)}}></input>
-              <text>{this.state.value}</text>
+              <input class="value" type="number" id="ratio" name="ratio" min="1" max="100" value={this.state.value} onChange={(event) => {this.handleValueChange(event)}}></input>
+              {/* <text>{this.state.value}</text> */}
             </div>
             <div class="inputCheck">
               <input type="checkbox" onChange={this.handleCheckbox} value="true"></input>
@@ -83,7 +96,7 @@ class FileUpload extends React.Component {
           </div>
           <div class="imageBox">
             <h3> After </h3>
-            <img src={blur} alt="afterIMG"></img>
+            <img src={this.state.compressed} alt="afterIMG"></img>
           </div>
         </div>
         <form>

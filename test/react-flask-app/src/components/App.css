@@ -47,8 +47,7 @@ img {
 
 .inputLine {
   min-width: 600px;
-  margin-top: 20px;
-  
+  /* margin-top: 20px; */
 }
 
 #ratio{
@@ -72,5 +71,9 @@ img {
 .inputCheck {
   min-width: 600px;
   margin-top: 10px;
-  
+}
+
+.compressionText{
+  min-width: 600px;
+  margin-top: 10px;
 }

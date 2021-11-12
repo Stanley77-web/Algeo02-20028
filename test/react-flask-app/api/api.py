@@ -3,6 +3,7 @@ from flask import Flask, flash, request, redirect, url_for, session, render_temp
 from werkzeug.utils import secure_filename
 from flask_cors import CORS, cross_origin
 import logging
+import imgcompression as compress
 
 logging.basicConfig(level=logging.INFO)
 
@@ -37,12 +38,15 @@ def fileUpload():
     target=os.path.join(UPLOAD_FOLDER)
     if not os.path.isdir(target):
         os.mkdir(target)
-    logger.info("Uploaded File")
     file = request.files['file'] 
+    ratio = request.form['ratio']
     filename = secure_filename(file.filename)
+    logger.info(" [] Uploaded File " + str(filename))
     destination="/".join([target, filename])
     file.save(destination)
     session['uploadFilePath']=destination
+    logger.info(" [] File downloaded, proceeding to compression stage")
+    compress.mainCompress(filename, ratio)
     response="File Uploaded"
     return response
 
