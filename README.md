@@ -1,6 +1,8 @@
-# Project Name
-> Outline a brief description of your project.
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
+# Algeo02-20028
+> Tugas Besar 2 IF 2123 Aljabar Linier dan Geometri
+> Aplikasi Nilai Eigen dan Vektor Eigen dalam Kompresi Gambar
+> Semester I Tahun 2021/2022
+
 ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
