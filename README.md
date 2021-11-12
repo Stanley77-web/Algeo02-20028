@@ -1,5 +1,5 @@
-# Algeo02-20028
-> Tugas Besar 2 IF 2123 Aljabar Linier dan Geometri (Aplikasi Nilai Eigen dan Vektor Eigen dalam Kompresi Gambar)
+# Tugas Besar 2 IF 2123 Aljabar Linier dan Geometri
+> Aplikasi Nilai Eigen dan Vektor Eigen dalam Kompresi Gambar
 
 ## Table of Contents
 * [General Info](#general-information)
