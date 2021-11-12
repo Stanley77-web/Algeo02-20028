@@ -1,12 +1,9 @@
 # Algeo02-20028
-> Tugas Besar 2 IF 2123 Aljabar Linier dan Geometri
-> Aplikasi Nilai Eigen dan Vektor Eigen dalam Kompresi Gambar
-> Semester I Tahun 2021/2022
+> Tugas Besar 2 IF 2123 Aljabar Linier dan Geometri (Aplikasi Nilai Eigen dan Vektor Eigen dalam Kompresi Gambar)
 
 ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
-* [Features](#features)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
 * [Usage](#usage)
@@ -16,27 +13,23 @@
 * [Contact](#contact)
 <!-- * [License](#license) -->
 
-
+<a name="general-information"></a>
 ## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
+Membuat program kompresi gambar dengan memanfaatkan algoritma SVD dalam bentuk 
+website lokal sederhana. 
+Spesifikasi website adalah sebagai berikut: 
+1. Website mampu menerima file gambar beserta input tingkat kompresi gambar 
+(dibebaskan formatnya).
+2. Website mampu menampilkan gambar input, output, runtime algoritma, dan persentase 
+hasil kompresi gambar (perubahan jumlah pixel gambar).
+3. File output hasil kompresi dapat diunduh melalui website.
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
 ## Technologies Used
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
-
-
-## Features
-List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
-
+- Python - version 3.8.5
+- ReactJs
+- Flask
 
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
@@ -44,9 +37,7 @@ List the ready features here:
 
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
 
-Proceed to describe how to install / setup one's local environment / get started with the project.
 
 
 ## Usage
