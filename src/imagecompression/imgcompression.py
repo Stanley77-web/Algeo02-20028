@@ -26,7 +26,7 @@ def SVD(matrix, k):
     # Menggunakan skema simultaneous power iteration
     Q = np.random.rand(n, k)
     Q, _ = np.linalg.qr(Q)
-    for i in range(200):
+    for i in range(50):
         Z = A.dot(Q)
         Q, R = np.linalg.qr(Z)
     # Mengambil nilai egeinvalue dari matriks R dengan terlebih dahulu
@@ -59,16 +59,15 @@ def mainCompress():
     startTime = datetime.now()
     file = str(input("Masukkan nama file: "))
     ratio = float(input("Masukkan rasio: "))
-    # path = 'wat.png'
-    # ratio = 5
     sys_path = sys.path[0]
 
     load_path = "../../test/testgambar/" + file
     path = os.path.join(sys_path, load_path)
 
     pic = Image.open(path)
-    fileFormat = pic.format
-    if(fileFormat != "JPEG"):
+    if pic.mode == "RGBA":
+        alpha = pic.getchannel('A')
+    elif pic.mode == 'P':
         pic = pic.convert("RGBA")
         alpha = pic.getchannel('A')
     pixel = np.array(pic)
@@ -90,7 +89,7 @@ def mainCompress():
     blueImage = Image.fromarray(blueCompressed)
     greenImage = Image.fromarray(greenCompressed)
 
-    if (fileFormat != "JPEG"):
+    if pic.mode == "RGBA":
         newImage = Image.merge(
             "RGBA", (redImage, greenImage, blueImage, alpha))
     else:
