@@ -46,9 +46,15 @@ def fileUpload():
     file.save(destination)
     session['uploadFilePath']=destination
     logger.info(" [] File downloaded, proceeding to compression stage")
-    compress.mainCompress(filename, ratio)
-    response="File Uploaded"
-    return response
+    newImage = compress.mainCompress(filename, ratio)
+    #response="File Uploaded"
+    return newImage
+
+#@app.route('/compress', methods=['GET','POST'])
+#def imagecompress():
+ #   f = open(.../Algeo02-20028/test/react-flask-app/src/components/static/user_uploaded/)
+
+ #   return newimage
 
 if __name__ == "__main__":
     app.secret_key = b'BenciTubes2104819'

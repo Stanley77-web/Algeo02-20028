@@ -55,7 +55,7 @@ def SVD(matrix, k):
 
 
 # PROGRAM UTAMA
-def mainCompress(file = "black.jpg", ratioStr = 50):
+def mainCompress(file, ratioStr):
     ratio = int(ratioStr)
     startTime = datetime.now()
     print("[] ================================================= []")
@@ -98,15 +98,21 @@ def mainCompress(file = "black.jpg", ratioStr = 50):
             "RGBA", (redImage, greenImage, blueImage, alpha))
     else:
         newImage = Image.merge("RGB", (redImage, greenImage, blueImage))
-    save_path = "../public/" + "converted_" + file
-    path = os.path.join(sys_path, save_path)
-    newImage.save(path)
     print("Compression Rate: " + str(round(ratio, 2)))
     print(newImage.size)
     time = datetime.now() - startTime
     print(f"{time.total_seconds():.0f} Seconds")
     print("[] ================================================= []")
+    return newImage
 
 
 # Menjalankan Program
 # mainCompress()
+#file = "black.jpg"
+#newImage = mainCompress(file, 35)
+
+#file = "black-compressed.jpg"
+#sys_path = sys.path[0]
+#save_path = "../public/" + "converted_" + file
+#path = os.path.join(sys_path, save_path)
+#newImage.save(path)
