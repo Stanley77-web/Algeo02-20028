@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import blur from "./static/blurred.png";
-import test from "./static/user_uploaded/algeo3.jpg";
 class FileUpload extends React.Component {
   constructor(props) {
     super(props);

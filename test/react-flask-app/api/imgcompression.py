@@ -106,7 +106,6 @@ def mainCompress(file = "black.jpg", ratioStr = 50):
     time = datetime.now() - startTime
     print(f"{time.total_seconds():.0f} Seconds")
     print("[] ================================================= []")
-    return time
 
 
 # Menjalankan Program
