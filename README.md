@@ -13,7 +13,6 @@
 * [Contact](#contact)
 <!-- * [License](#license) -->
 
-<a name="general-information"></a>
 ## General Information
 Membuat program kompresi gambar dengan memanfaatkan algoritma SVD dalam bentuk 
 website lokal sederhana. 
