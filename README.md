@@ -15,13 +15,13 @@
 
 ## General Information
 Membuat program kompresi gambar dengan memanfaatkan algoritma SVD dalam bentuk 
-website lokal sederhana. 
+website lokal sederhana. <br /> <br />
 Spesifikasi website adalah sebagai berikut: 
-1. Website mampu menerima file gambar beserta input tingkat kompresi gambar 
+- Website mampu menerima file gambar beserta input tingkat kompresi gambar 
 (dibebaskan formatnya).
-2. Website mampu menampilkan gambar input, output, runtime algoritma, dan persentase 
+- Website mampu menampilkan gambar input, output, runtime algoritma, dan persentase 
 hasil kompresi gambar (perubahan jumlah pixel gambar).
-3. File output hasil kompresi dapat diunduh melalui website.
+- File output hasil kompresi dapat diunduh melalui website.
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
