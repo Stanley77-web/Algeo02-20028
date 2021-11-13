@@ -1,13 +1,10 @@
 import React from 'react';
 import './App.css';
 import blur from "./static/blurred.png";
-import axios from 'axios';
+
 class FileUpload extends React.Component {
   constructor(props) {
     super(props);
-    var running = 0;
-    var startTime;
-
 
     this.state = {
       file: blur,
@@ -43,13 +40,13 @@ class FileUpload extends React.Component {
   
  handleUploadImage(ev) {
    const data = new FormData();
-   ev.preventDefault();
    data.append('file', this.uploadInput.files[0]);
-    data.append('filename', this.uploadInput.files[0].name); // idk how to delete this ill just let it be
+   data.append('filename', this.uploadInput.files[0].name); // idk how to delete this ill just let it be
     data.append('ratio', this.state.value);
     // const objectURL = window.URL.createObjectURL(this.uploadInput.files[0]);
     
     if (this.uploadInput.files[0] !== undefined) {
+      ev.preventDefault();
       var startDate = Date.now();
       const config = {
         method: 'POST',
@@ -63,28 +60,7 @@ class FileUpload extends React.Component {
         var endDate = (Date.now() - startDate); 
         console.log(endDate);
         alert(endDate);
-        if (module.hot && process.env.NODE_ENV !== 'production') {
-          module.hot.accept();
-          }
-      })
-      // .then((response) => {
-      //   this.setState({
-      //     compressed: process.env.PUBLIC_URL + 'converted_ngetest.png'
-      //   });
-      // })
-      // .catch((err) => {
-      //   alert("jancok");
-      // })
-      // compressed: postcompressionsrc,
-      // ev.preventDefault();
-      
-      // .then(() => {
-      //   const postcompressionsrc = "./static/".concat('converted_', this.uploadInput.files[0].name);
-      //   const testImg = require("./static/user_uploaded/algeo3.jpg")
-      //   this.setState({
-      //     compressed: test,
-      //   })
-      // })
+      }).catch(error => console.log(error));
     }
   }
 

@@ -35,10 +35,10 @@ def fileUpload():
     file.save(destination)
     session['uploadFilePath']=destination
     logger.info(" [] File downloaded, proceeding to compression stage")
-    newImage = compress.mainCompress(filename, ratio)
-    # time.sleep(60)
+    compress.mainCompress(filename, ratio)
     response = app.response_class(status=200)
     response.headers.add('Access-Control-Allow-Origin', '*')
+    time.sleep(0.1)
     return response
 
 #@app.route('/compress', methods=['GET','POST'])
