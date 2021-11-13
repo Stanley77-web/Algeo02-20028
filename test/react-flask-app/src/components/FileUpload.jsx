@@ -61,8 +61,11 @@ class FileUpload extends React.Component {
           compressed: process.env.PUBLIC_URL + postcompressionsrc
         });
         var endDate = (Date.now() - startDate); 
+        console.log(endDate);
         alert(endDate);
-        ev.preventDefault();
+        if (module.hot && process.env.NODE_ENV !== 'production') {
+          module.hot.accept();
+          }
       })
       // .then((response) => {
       //   this.setState({
