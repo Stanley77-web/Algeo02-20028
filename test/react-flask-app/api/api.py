@@ -19,21 +19,19 @@ SESSION_TYPE = "redis"
 PERMANENT_SESSION_LIFETIME = 1800
 app.config.update(SECRET_KEY=b'BenciTubes2104819')
 
-white = ['http://localhost:8080','http://localhost:9000', 'http://localhost:3000']
-@app.after_request
-def add_cors_headers(response):
-    r = request.referrer[:-1]
-    if r in white:
-        response.headers.add('Access-Control-Allow-Origin', r)
-        response.headers.add('Access-Control-Allow-Credentials', 'true')
-        response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
-        response.headers.add('Access-Control-Allow-Headers', 'Cache-Control')
-        response.headers.add('Access-Control-Allow-Headers', 'X-Requested-With')
-        response.headers.add('Access-Control-Allow-Headers', 'Authorization')
-        response.headers.add('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
-    return response
+white = ['http://localhost:8080','http://localhost:9000', 'http://localhost:3000', 'http://localhost/5000']
+# @app.after_request
+# def add_cors_headers(response):
+#     response.headers.add('Access-Control-Allow-Origin', '*')
+#     response.headers.add('Access-Control-Allow-Credentials', 'true')
+#     response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+#     response.headers.add('Access-Control-Allow-Headers', 'Cache-Control')
+#     response.headers.add('Access-Control-Allow-Headers', 'X-Requested-With')
+#     response.headers.add('Access-Control-Allow-Headers', 'Authorization')
+#     response.headers.add('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+#     return response
 
-@app.route('/upload', methods=['POST'])
+@app.route('/upload', methods=['POST', 'GET'])
 def fileUpload():
     target=os.path.join(UPLOAD_FOLDER)
     if not os.path.isdir(target):
@@ -43,12 +41,15 @@ def fileUpload():
     filename = secure_filename(file.filename)
     logger.info(" [] Uploaded File " + str(filename))
     destination="/".join([target, filename])
+    if os.path.exists(destination):
+        os.remove(destination)
     file.save(destination)
     session['uploadFilePath']=destination
     logger.info(" [] File downloaded, proceeding to compression stage")
     newImage = compress.mainCompress(filename, ratio)
-    #response="File Uploaded"
-    return newImage
+    response = app.response_class(status=200)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 #@app.route('/compress', methods=['GET','POST'])
 #def imagecompress():

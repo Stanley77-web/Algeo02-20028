@@ -1,55 +1,80 @@
 import React from 'react';
 import './App.css';
 import blur from "./static/blurred.png";
+import axios from 'axios';
 class FileUpload extends React.Component {
   constructor(props) {
     super(props);
+    var running = 0;
+    var startTime;
+
 
     this.state = {
       file: blur,
       compressed: blur,
       value: 50,
+      time: 0,
     }    
     this.handleChange = this.handleChange.bind(this)
     this.handleUploadImage = this.handleUploadImage.bind(this);
   }
 
   handleValueChange(event){
+    event.preventDefault();
     const inputValue = event.target.value;
     this.setState({
       value: inputValue
     })
   }
 
+  
+
   handleChange(event) {
+    event.preventDefault();
     this.setState({
       file: URL.createObjectURL(event.target.files[0])
       // compressed: blur
     })
   }
   handleCheckbox = Evn => {
+    Evn.preventDefault();
     console.log(Evn.target.value)
   }
   
  handleUploadImage(ev) {
-    ev.preventDefault();
-
-    const data = new FormData();
-    data.append('file', this.uploadInput.files[0]);
+   const data = new FormData();
+   ev.preventDefault();
+   data.append('file', this.uploadInput.files[0]);
     data.append('filename', this.uploadInput.files[0].name); // idk how to delete this ill just let it be
     data.append('ratio', this.state.value);
     // const objectURL = window.URL.createObjectURL(this.uploadInput.files[0]);
     
     if (this.uploadInput.files[0] !== undefined) {
+      var startDate = Date.now();
       const config = {
         method: 'POST',
         body: data,
       }
-      fetch('http://127.0.0.1:5000/upload', config);
-      const postcompressionsrc = 'converted_'.concat(this.uploadInput.files[0].name);
-      this.setState({
-        compressed: process.env.PUBLIC_URL + postcompressionsrc
-      });
+      fetch('http://localhost:5000/upload', config).then(() => {
+        const postcompressionsrc = 'converted_'.concat(this.uploadInput.files[0].name);
+        this.setState({
+          compressed: process.env.PUBLIC_URL + postcompressionsrc
+        });
+        var endDate = (Date.now() - startDate); 
+        alert(endDate);
+        ev.preventDefault();
+      })
+      // .then((response) => {
+      //   this.setState({
+      //     compressed: process.env.PUBLIC_URL + 'converted_ngetest.png'
+      //   });
+      // })
+      // .catch((err) => {
+      //   alert("jancok");
+      // })
+      // compressed: postcompressionsrc,
+      // ev.preventDefault();
+      
       // .then(() => {
       //   const postcompressionsrc = "./static/".concat('converted_', this.uploadInput.files[0].name);
       //   const testImg = require("./static/user_uploaded/algeo3.jpg")

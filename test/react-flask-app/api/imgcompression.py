@@ -99,11 +99,18 @@ def mainCompress(file, ratioStr):
     else:
         newImage = Image.merge("RGB", (redImage, greenImage, blueImage))
     print("Compression Rate: " + str(round(ratio, 2)))
-    print(newImage.size)
+    save_path = "../public/" + "converted_" + file
+    path = os.path.join(sys_path, save_path)
+    if os.path.exists(path):
+        os.remove(path)
+        if os.path.exists(path):
+            print("")
+    newImage.save(path)
+    # print(newImage.size)
     time = datetime.now() - startTime
     print(f"{time.total_seconds():.0f} Seconds")
     print("[] ================================================= []")
-    return newImage
+    return "done ig"
 
 
 # Menjalankan Program
