@@ -32,23 +32,35 @@ hasil kompresi gambar (perubahan jumlah pixel gambar).
 
 
 ## Setup
+***[Setup hanya disediakan untuk Sistem Operasi Windows]***
 1. Download dan install [python3](https://www.python.org/downloads/)
 2. Clone repository ini menggunakan perintah berikut (git bash):
 ```
 $ git clone https://github.com/Stanley77-web/Algeo02-20028.git
 ```
-3. Arahkan direktori ke dalam folder repository, lalu `Shift + Right Mouse Button` pada direktori kemudian pilih opsi `Open Powershell Window here`
-![Terminal](https://user-images.githubusercontent.com/73146752/141690744-807b7a57-f580-47f3-9e2e-8082f202b0f1.png)
-4. Setelah terminal Powershell terbuka, buat virtual environment dengan menuliskan command:
+3. Buka terminal command prompt, kemudian arahkan direktori terminal tersebut pada folder repository
+    
+    ![image](https://user-images.githubusercontent.com/73146752/141693306-29b73c48-1ad1-4b1d-a9b8-b2bad00716f8.png)
+    
+    ![image](https://user-images.githubusercontent.com/73146752/141693385-7c7f821f-dc3c-4cb1-9952-a4b46b470d92.png)
+
+4. Arahkan direktori pada folder *api* terminal dengan menuliskan perintah:
+```
+$ cd src\react-flask-app\api
+```
+   ![image](https://user-images.githubusercontent.com/73146752/141691187-2540e143-b887-4343-a2bf-eaef7ea48b26.png)
+   
+5. Buatlah *virtual environment* dengan menuliskan perintah:
 ```
 $ python3 -m venv venv
 ```
-5. Kemudian, aktivasi Scripts virtual environment dengan menuliskan perintah berikut:
+
+6. Kemudian, aktivasi *Scripts virtual environment* dengan menuliskan perintah berikut:
 ```
 $ venv\Scripts\activate
 ```
 
-6. *Install* semua library dengan menjalankan perintah-perintah berikut:
+7. *Install* semua library dengan menjalankan perintah-perintah berikut:
 ```
 $ npm install
 $ pip install flask python-dotenv
@@ -56,12 +68,12 @@ $ pip install pillow
 $ pip install numpy
 $ pip install Flask-Cors
 ```
-7. Setelah meng-install semua library, siapkan dua buah terminal untuk menjalankan website.
-8. Terminal pertama dijalankan perintah:
+8. Setelah meng-*install* semua *library*, siapkan dua buah terminal Powershell untuk menjalankan website dengan direktori yang sama pada nomor *4*.
+9. Untuk menjalankan api, terminal Powershell pertama dituliskan perintah:
 ```
 $ yarn start-api
 ```
-9. Terminal kedua dijalankan perintah:
+10. Untuk menjalankan website, terminal Powershell kedua dituliskan perintah:
 ```
 $ yarn start
 ```
