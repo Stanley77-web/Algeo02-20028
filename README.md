@@ -26,9 +26,9 @@ hasil kompresi gambar (perubahan jumlah pixel gambar).
 
 
 ## Technologies Used
-- Python - version 3.8.5
-- ReactJs
-- Flask
+- [Python - version 3.8.5](https://en.wikipedia.org/wiki/Python_(programming_language)) 
+- [React - version 17.0.2](https://en.wikipedia.org/wiki/React_(JavaScript_library)) 
+- [Flask - version 2.0.2](https://en.wikipedia.org/wiki/Flask_(web_framework)) 
 
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
@@ -36,6 +36,8 @@ hasil kompresi gambar (perubahan jumlah pixel gambar).
 
 
 ## Setup
+- Download dan Install [python3](https://www.python.org/downloads/)
+
 
 
 
