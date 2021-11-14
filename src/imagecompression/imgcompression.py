@@ -1,13 +1,12 @@
 import numpy as np
 import numpy.linalg
 from PIL import Image
-from datetime import datetime
 import sys
 import os
 
 
 def CompressChannel(channelMatrix, k, eigen_total):
-    """
+    """ 
     Menghasilkan matriks hasil kompresi menggunakan algoritma SVD.
     """
     U, S, VT = SVD(channelMatrix, eigen_total)
@@ -106,7 +105,6 @@ def mainCompress():
     save_path = "../../test/testgambar/" + "compressed_" + file
     path = os.path.join(sys_path, save_path)
     newImage.save(path)
-    print("Compression Rate: " + str(round(ratio, 2)))
 
 
 # Menjalankan Program
