@@ -28,7 +28,7 @@ hasil kompresi gambar (perubahan jumlah pixel gambar).
 
 ## Tampilan Website
 
-![image](https://user-images.githubusercontent.com/73146752/141695568-ec368fff-5b3d-45b9-9df2-b6f12149d8ed.png)
+![image](https://user-images.githubusercontent.com/73146752/141695778-f849f46f-312f-4a04-970b-e56c1fbaba2a.png)
 
 ## Setup
 ***[Setup hanya disediakan untuk Sistem Operasi Windows]***
