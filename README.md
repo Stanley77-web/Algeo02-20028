@@ -74,9 +74,7 @@ $ yarn start-api
 ```
 $ yarn start
 ```
-Terminal akan menampilkan URL website dari program. Salin URL tersebut dan buka pada browser yang ingin dipakai, Selamat Mencoba!
-    
-   ![image](https://user-images.githubusercontent.com/73146752/141695854-50e7fc33-349e-4e77-96c3-990b93ae8b0b.png)
+Sesaat setelah memasukkan perintah `yarn start`, terminal akan membuka Website program secara otomatis pada *default* browser. Selamat Mencoba!
     
 ## Penulis
 <table>
