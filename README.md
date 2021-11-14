@@ -1,15 +1,15 @@
 # Tugas Besar 2 IF 2123 Aljabar Linier dan Geometri
 > Aplikasi Nilai Eigen dan Vektor Eigen dalam Kompresi Gambar
 
-## Table of Contents
-* [General Info](#general-information)
-* [Technologies Used](#technologies-used)
+## Daftar Isi
+* [Informasi Umum](#informasi-umum)
+* [Teknologi Digunakan](#teknologi-digunakan)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
 * [Author](#author)
 <!-- * [License](#license) -->
 
-## General Information
+## Informasi Umum
 Membuat program kompresi gambar dengan memanfaatkan algoritma SVD dalam bentuk 
 website lokal sederhana. <br /> <br />
 Spesifikasi website adalah sebagai berikut: 
@@ -21,14 +21,14 @@ hasil kompresi gambar (perubahan jumlah pixel gambar).
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
-## Technologies Used
+## Teknologi Digunakan
 - [Python - version 3.8.5](https://en.wikipedia.org/wiki/Python_(programming_language)) 
 - [React - version 17.0.2](https://en.wikipedia.org/wiki/React_(JavaScript_library)) 
 - [Flask - version 2.0.2](https://en.wikipedia.org/wiki/Flask_(web_framework)) 
 
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
+
 
 
 ## Setup
@@ -49,12 +49,13 @@ $ git clone https://github.com/Stanley77-web/Algeo02-20028.git
 $ python3 -m venv venv
 ```
 
-5. Kemudian, aktivasi *Scripts virtual environment* dengan menuliskan perintah berikut:
+5. Kemudian, aktivasi *Scripts* dari *virtual environment* dengan menuliskan perintah:
 ```
 $ venv\Scripts\activate
 ```
+   ![image](https://user-images.githubusercontent.com/73146752/141694110-cb2b45a8-f3b3-4c43-8c1c-f1854cc452ea.png)
 
-6. *Install* semua library dengan menjalankan perintah-perintah berikut:
+6. *Install* semua *library* dengan menjalankan perintah-perintah berikut:
 ```
 $ npm install
 $ pip install flask python-dotenv
