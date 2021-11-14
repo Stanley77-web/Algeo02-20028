@@ -1,26 +1,28 @@
 import os
-from flask import Flask, flash, request, redirect, url_for, session, render_template
+from flask import Flask, flash, request, redirect, url_for, session, render_template, send_from_directory
 from werkzeug.utils import secure_filename
 from flask_cors import CORS, cross_origin
 import logging
 import imgcompression as compress
+# import compressImage as compress
 import time
 
 logging.basicConfig(level=logging.INFO)
-
 logger = logging.getLogger('API Called')
 
 
 UPLOAD_FOLDER = '../src/components/static/user_uploaded'
+DOWNLOAD_FOLDER = '../public/'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
 SESSION_TYPE = "redis"
 PERMANENT_SESSION_LIFETIME = 1800
 app.config.update(SECRET_KEY=b'BenciTubes2104819')
 
-@app.route('/upload', methods=['POST', 'GET'])
+@app.route('/upload', methods=['POST'])
 def fileUpload():
     target=os.path.join(UPLOAD_FOLDER)
     if not os.path.isdir(target):
@@ -41,11 +43,17 @@ def fileUpload():
     time.sleep(0.1)
     return response
 
-#@app.route('/compress', methods=['GET','POST'])
-#def imagecompress():
- #   f = open(.../Algeo02-20028/test/react-flask-app/src/components/static/user_uploaded/)
+@app.route("/view/<path:name>")
+def view_file(name):
+    return send_from_directory(
+        app.config['DOWNLOAD_FOLDER'], name, as_attachment=False
+    )
 
- #   return newimage
+@app.route("/download/<path:name>")
+def download_file(name):
+    return send_from_directory(
+        app.config['DOWNLOAD_FOLDER'], name, as_attachment=True
+    )
 
 if __name__ == "__main__":
     app.secret_key = b'BenciTubes2104819'

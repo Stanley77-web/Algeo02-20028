@@ -1,7 +1,6 @@
 import numpy as np
 import numpy.linalg
 from PIL import Image
-from datetime import datetime
 import sys
 import os
 
@@ -57,7 +56,6 @@ def SVD(matrix, k):
 # PROGRAM UTAMA
 def mainCompress(file, ratioStr):
     ratio = float(ratioStr)
-    startTime = datetime.now()
     print("[] ================================================= []")
     print("imgcompression called, will now work at file: " + file + " at ratio " + str(ratio) + ".")
     # file = str(input("Masukkan nama file: "))
@@ -107,8 +105,6 @@ def mainCompress(file, ratioStr):
             print("")
     newImage.save(path)
     # print(newImage.size)
-    time = datetime.now() - startTime
-    print(f"{time.total_seconds():.0f} Seconds")
     print("[] ================================================= []")
 
 # Menjalankan Program

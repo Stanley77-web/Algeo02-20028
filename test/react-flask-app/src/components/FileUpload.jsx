@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import blur from "./static/blurred.png";
+import fin from "./static/fin.jpeg";
 
 class FileUpload extends React.Component {
   constructor(props) {
@@ -10,7 +11,9 @@ class FileUpload extends React.Component {
       file: blur,
       compressed: blur,
       value: 50,
-      time: 0,
+      timeTaken: 0,
+      downloadlink : "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      isCompressed: false,
     }    
     this.handleChange = this.handleChange.bind(this)
     this.handleUploadImage = this.handleUploadImage.bind(this);
@@ -39,44 +42,55 @@ class FileUpload extends React.Component {
   }
   
  handleUploadImage(ev) {
+  ev.preventDefault();
+  ev.stopPropagation();
+  ev.nativeEvent.stopImmediatePropagation();
+
    const data = new FormData();
    data.append('file', this.uploadInput.files[0]);
-   data.append('filename', this.uploadInput.files[0].name); // idk how to delete this ill just let it be
+   data.append('filename', this.uploadInput.files[0].name); 
     data.append('ratio', this.state.value);
-    // const objectURL = window.URL.createObjectURL(this.uploadInput.files[0]);
+
     
     if (this.uploadInput.files[0] !== undefined) {
-      ev.preventDefault();
       var startDate = Date.now();
       const config = {
         method: 'POST',
         body: data,
       }
-      fetch('http://localhost:5000/upload', config).then(() => {
+      fetch('http://localhost:5000/upload', config)
+      .then(() => {
         const postcompressionsrc = 'converted_'.concat(this.uploadInput.files[0].name);
+        var endDate = (Date.now() - startDate)/1000; 
         this.setState({
-          compressed: process.env.PUBLIC_URL + postcompressionsrc
+          compressed: "http://127.0.0.1:5000/view/".concat(postcompressionsrc),
+          downloadlink: "http://127.0.0.1:5000/download/".concat(postcompressionsrc),
+          timeTaken : endDate,
+          isCompressed : true
         });
-        var endDate = (Date.now() - startDate); 
-        console.log(endDate);
-        alert(endDate);
-      }).catch(error => console.log(error));
+      })
     }
+    return false;
   }
 
   
   
   render() {
-    // let imageForm;
-    // imageForm = (
-    // )
-
+    let downloadImg;
+    if (this.state.isCompressed){
+      downloadImg = (
+        <div class="downloadBox">
+          <button class="download" onClick={() => window.open(this.state.downloadlink)}>Download</button>
+          <text class="time">Time taken: {this.state.timeTaken} seconds</text>
+        </div>
+        )
+    }
     return (
       <div>
-          <form onSubmit={this.handleUploadImage} class="container">
+          <form onSubmit={(event) => {event.preventDefault(); this.handleUploadImage(event)}} class="container">
             <div>
               <input ref={(ref) => { this.uploadInput = ref; }} type="file" onChange={this.handleChange}/>
-              <button>Upload</button>
+              <button>Convert!</button>
             </div>
             <div class="compressionText">
             <text>Compression Ratio</text>
@@ -100,11 +114,9 @@ class FileUpload extends React.Component {
           <div class="imageBox">
             <h3> After </h3>
             <img src={this.state.compressed} alt="afterIMG"></img>
+            {downloadImg}
           </div>
         </div>
-        <form>
-          <button>Download</button>
-        </form>
       </div>
 
     );

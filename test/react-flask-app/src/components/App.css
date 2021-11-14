@@ -24,6 +24,8 @@ button {
   margin-left: 10px;
   border-width: 1px;
 }
+button:active {
+  background-color: #369bf3 }
 
 input {
   color: rgb(0, 0, 0); font-size: 11px; line-height: 11px; padding: 4px; border-radius: 7px; font-family:Tahoma, Arial, Verdana, Meiryo, "MS Gothic", sans-serif, Lucida Sans; font-weight: normal; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none;border: 2px solid rgb(28, 110, 164); display: inline-block;
@@ -38,11 +40,13 @@ input {
 }
 
 img {
-  max-width: 256px;
+  max-width: 300px;
+  min-width: 300px;
 }
 
 .imageBox{
-  min-width: 400px;
+  width: 400px;
+  margin-right: 80px;
 }
 
 .inputLine {
@@ -102,3 +106,15 @@ img {
   margin-top: 10px;
 }
 
+.download{
+ margin-left: 30px;
+}
+
+.time{
+  font-size: 15px;
+  margin-left: 15px;
+}
+
+.downloadBox{
+  margin-top: 20px;
+}
