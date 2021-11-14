@@ -33,11 +33,12 @@ hasil kompresi gambar (perubahan jumlah pixel gambar).
 
 ## Setup
 1. Download dan install [python3](https://www.python.org/downloads/)
-2. Clone repository ini menggunakan command berikut (git bash):
+2. Clone repository ini menggunakan perintah berikut (git bash):
 ```
 $ git clone https://github.com/Stanley77-web/Algeo02-20028.git
 ```
-3. Open folder api pada folder yang sudah di clone seperti gambar berikut, kemudian tekan `Shift + Right Mouse Button` lalu pilih `Open Powershell Window here`
+3. Arahkan direktori ke dalam folder repository, lalu `Shift + Right Mouse Button` pada direktori kemudian pilih opsi `Open Powershell Window here`
+![Terminal](https://user-images.githubusercontent.com/73146752/141690744-807b7a57-f580-47f3-9e2e-8082f202b0f1.png)
 4. Setelah terminal Powershell terbuka, buat virtual environment dengan menuliskan command:
 ```
 $ python3 -m venv venv
