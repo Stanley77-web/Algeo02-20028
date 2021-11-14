@@ -6,11 +6,7 @@
 * [Technologies Used](#technologies-used)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
-* [Usage](#usage)
-* [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
-* [Contact](#contact)
+* [Author](#author)
 <!-- * [License](#license) -->
 
 ## General Information
@@ -36,50 +32,55 @@ hasil kompresi gambar (perubahan jumlah pixel gambar).
 
 
 ## Setup
-1. Download dan install [python3](https://www.python.org/downloads/) jika belum
+1. Download dan install [python3](https://www.python.org/downloads/)
 2. Clone repository ini menggunakan command berikut (git bash):
 ```
 $ git clone https://github.com/Stanley77-web/Algeo02-20028.git
 ```
-3. Open folder api, tekan `Shift + Right Mouse Button` lalu pilih `Open Powershell Window here`
-4. 
+3. Open folder api pada folder yang sudah di clone seperti gambar berikut, kemudian tekan `Shift + Right Mouse Button` lalu pilih `Open Powershell Window here`
+4. Setelah terminal Powershell terbuka, buat virtual environment dengan menuliskan command:
+```
+$ python3 -m venv venv
+```
+5. Kemudian, aktivasi Scripts virtual environment dengan menuliskan perintah berikut:
+```
+$ venv\Scripts\activate
+```
 
-## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
+6. *Install* semua library dengan menjalankan perintah-perintah berikut:
+```
+$ npm install
+$ pip install flask python-dotenv
+$ pip install pillow
+$ pip install numpy
+$ pip install Flask-Cors
+```
+7. Setelah meng-install semua library, siapkan dua buah terminal untuk menjalankan website.
+8. Terminal pertama dijalankan perintah:
+```
+$ yarn start-api
+```
+9. Terminal kedua dijalankan perintah:
+```
+$ yarn start
+```
 
-`write-your-code-here`
-
-
-## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
-
-
-## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-- Feature to be added 1
-- Feature to be added 2
-
-
-## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
-
-
-## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
-
-
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
-
-<!-- You don't have to include all sections - just the one's relevant to your project -->
+## Author
+<table>
+    <tr>
+      <td><b>Nama</b></td>
+      <td><b>NIM</b></td>
+    </tr>
+    <tr>
+      <td><b>Timothy Stanley Setiawan</b></td>
+      <td><b>13520028</b></td>
+    </tr>
+    <tr>
+      <td><b>Farrel Farandieka Fibriyanto</b></td>
+      <td><b>13520054</b></td>
+    </tr>
+    <tr>
+      <td><b>Jeremy Rionaldo Pasaribu</b></td>
+      <td><b>13520082</b></td>
+    </tr>
+</table>
