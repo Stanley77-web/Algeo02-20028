@@ -1,21 +1,17 @@
 import os
-from flask import Flask, flash, request, redirect, url_for, session, render_template, send_from_directory
+from flask import Flask, request, session, send_from_directory
 from werkzeug.utils import secure_filename
-from flask_cors import CORS, cross_origin
 import logging
 import imgcompression as compress
-# import compressImage as compress
-import time
 
+from flask_cors import CORS, cross_origin
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('API Called')
 
-
+app = Flask(__name__)
 UPLOAD_FOLDER = '../public/user_uploaded/'
 DOWNLOAD_FOLDER = '../public/user_uploaded/hasil/'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
-
-app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
 SESSION_TYPE = "redis"
@@ -34,15 +30,12 @@ def fileUpload():
     destination= target + filename
     print(destination)
     if not(os.path.exists(destination)):
-        # print("belum ada ajg")
-        file.save(destination)
-        # os.remove(destination)        
+        file.save(destination)  
     session['uploadFilePath']=destination
     logger.info(" [] File downloaded, proceeding to compression stage")
     compress.mainCompress(filename, ratio)
     response = app.response_class(status=200)
     response.headers.add('Access-Control-Allow-Origin', '*')
-    time.sleep(0.1)
     return response
 
 @app.route("/view/<path:name>")

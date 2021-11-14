@@ -24,8 +24,12 @@ button {
   margin-left: 10px;
   border-width: 1px;
 }
+button:hover{
+  background-color: #57adf8; 
+}
 button:active {
-  background-color: #369bf3 }
+  background-color: #0c83eb;
+ }
 
 input {
   color: rgb(0, 0, 0); font-size: 11px; line-height: 11px; padding: 4px; border-radius: 7px; font-family:Tahoma, Arial, Verdana, Meiryo, "MS Gothic", sans-serif, Lucida Sans; font-weight: normal; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none;border: 2px solid rgb(28, 110, 164); display: inline-block;
@@ -39,7 +43,7 @@ input {
   margin: 10px;
 }
 
-img {
+.userImg {
   max-width: 300px;
   min-width: 300px;
 }
@@ -117,4 +121,11 @@ img {
 
 .downloadBox{
   margin-top: 20px;
+}
+.loading{
+  width: 100px;
+}
+.pixel{
+  font-size: 15px;
+  margin-left: 108px;
 }
