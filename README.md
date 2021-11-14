@@ -6,7 +6,7 @@
 * [Teknologi Digunakan](#teknologi-digunakan)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
-* [Author](#author)
+* [Penulis](#penulis)
 <!-- * [License](#license) -->
 
 ## Informasi Umum
@@ -75,7 +75,7 @@ $ yarn start
 ```
 Terminal akan menampilkan URL website dari program. Salin URL tersebut dan buka pada browser yang ingin dipakai, Selamat Mencoba!
 
-## Author
+## Penulis
 <table>
     <tr>
       <td><b>Nama</b></td>
