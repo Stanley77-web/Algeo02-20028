@@ -52,7 +52,7 @@ $ python3 -m venv venv
 ```
 $ venv\Scripts\activate
 ```
-   ![image](https://user-images.githubusercontent.com/73146752/141694110-cb2b45a8-f3b3-4c43-8c1c-f1854cc452ea.png)
+   [image](https://user-images.githubusercontent.com/73146752/141694110-cb2b45a8-f3b3-4c43-8c1c-f1854cc452ea.png)
 
 6. *Install* semua *library* dengan menjalankan perintah-perintah berikut:
 ```
