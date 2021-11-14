@@ -36,10 +36,13 @@ hasil kompresi gambar (perubahan jumlah pixel gambar).
 
 
 ## Setup
-- Download dan Install [python3](https://www.python.org/downloads/)
-
-
-
+1. Download dan install [python3](https://www.python.org/downloads/) jika belum
+2. Clone repository ini menggunakan command berikut (git bash):
+```
+$ git clone https://github.com/Stanley77-web/Algeo02-20028.git
+```
+3. Open folder api, tekan `Shift + Right Mouse Button` lalu pilih `Open Powershell Window here`
+4. 
 
 ## Usage
 How does one go about using it?
