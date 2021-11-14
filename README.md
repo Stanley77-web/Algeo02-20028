@@ -4,7 +4,7 @@
 ## Daftar Isi
 * [Informasi Umum](#informasi-umum)
 * [Teknologi Digunakan](#teknologi-digunakan)
-* [Screenshots](#screenshots)
+* [Screenshots](#tampilan-website)
 * [Setup](#setup)
 * [Penulis](#penulis)
 <!-- * [License](#license) -->
@@ -26,10 +26,9 @@ hasil kompresi gambar (perubahan jumlah pixel gambar).
 - [React - version 17.0.2](https://en.wikipedia.org/wiki/React_(JavaScript_library)) 
 - [Flask - version 2.0.2](https://en.wikipedia.org/wiki/Flask_(web_framework)) 
 
-## Screenshots
-![Example screenshot](./img/screenshot.png)
+## Tampilan Website
 
-
+![image](https://user-images.githubusercontent.com/73146752/141695568-ec368fff-5b3d-45b9-9df2-b6f12149d8ed.png)
 
 ## Setup
 ***[Setup hanya disediakan untuk Sistem Operasi Windows]***
@@ -64,11 +63,13 @@ $ pip install numpy
 $ pip install Flask-Cors
 ```
 
-7. Setelah meng-*install* semua *library*, siapkan dua buah terminal Command Prompt dengan direktori yang sama dengan langkah *3*.
+7. Setelah meng-*install* semua *library*, siapkan dua buah terminal Command Prompt dengan direktori dan aktivasi *Virtual Environment* yang sama dengan langkah *5*.
 8. Terminal Command Prompt pertama dituliskan perintah:
 ```
 $ yarn start-api
 ```
+   ![image](https://user-images.githubusercontent.com/73146752/141695513-91770eef-c6d7-4323-8517-eac7dad3b008.png)
+   
 9. Terminal Command Prompt kedua dituliskan perintah:
 ```
 $ yarn start
