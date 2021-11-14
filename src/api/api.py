@@ -18,8 +18,8 @@ SESSION_TYPE = "redis"
 PERMANENT_SESSION_LIFETIME = 1800
 app.config.update(SECRET_KEY=b'BenciTubes2104819')
 
-@app.route('/upload', methods=['POST'])
-def fileUpload():
+@app.route('/compress', methods=['POST'])
+def fileCompress():
     target=os.path.join(UPLOAD_FOLDER)
     if not os.path.isdir(target):
         os.mkdir(target)

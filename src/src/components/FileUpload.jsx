@@ -59,7 +59,7 @@ class FileUpload extends React.Component {
         method: 'POST',
         body: data,
       }
-      fetch('http://localhost:5000/upload', config)
+      fetch('http://localhost:5000/compress', config)
       .then(() => {
         const postcompressionsrc = 'compress'.concat(filename);
         var endDate = (Date.now() - startDate)/1000; 
