@@ -38,29 +38,23 @@ hasil kompresi gambar (perubahan jumlah pixel gambar).
 ```
 $ git clone https://github.com/Stanley77-web/Algeo02-20028.git
 ```
-3. Buka terminal command prompt, kemudian arahkan direktori terminal tersebut pada folder repository
+3. Buka terminal Command Prompt, kemudian arahkan direktori terminal pada folder repository seperti gambar berikut:
+
+    ![image](https://user-images.githubusercontent.com/73146752/141693651-37b17ad6-8d50-407a-8182-12a3196a065b.png)
     
     ![image](https://user-images.githubusercontent.com/73146752/141693306-29b73c48-1ad1-4b1d-a9b8-b2bad00716f8.png)
     
-    ![image](https://user-images.githubusercontent.com/73146752/141693385-7c7f821f-dc3c-4cb1-9952-a4b46b470d92.png)
-
-4. Arahkan direktori pada folder *api* terminal dengan menuliskan perintah:
-```
-$ cd src\react-flask-app\api
-```
-   ![image](https://user-images.githubusercontent.com/73146752/141691187-2540e143-b887-4343-a2bf-eaef7ea48b26.png)
-   
-5. Buatlah *virtual environment* dengan menuliskan perintah:
+4. Buatlah *virtual environment* dengan menuliskan perintah:
 ```
 $ python3 -m venv venv
 ```
 
-6. Kemudian, aktivasi *Scripts virtual environment* dengan menuliskan perintah berikut:
+5. Kemudian, aktivasi *Scripts virtual environment* dengan menuliskan perintah berikut:
 ```
 $ venv\Scripts\activate
 ```
 
-7. *Install* semua library dengan menjalankan perintah-perintah berikut:
+6. *Install* semua library dengan menjalankan perintah-perintah berikut:
 ```
 $ npm install
 $ pip install flask python-dotenv
@@ -68,15 +62,17 @@ $ pip install pillow
 $ pip install numpy
 $ pip install Flask-Cors
 ```
-8. Setelah meng-*install* semua *library*, siapkan dua buah terminal Powershell untuk menjalankan website dengan direktori yang sama pada nomor *4*.
-9. Untuk menjalankan api, terminal Powershell pertama dituliskan perintah:
+
+7. Setelah meng-*install* semua *library*, siapkan dua buah terminal Command Prompt dengan direktori yang sama dengan langkah *3*.
+8. Terminal Command Prompt pertama dituliskan perintah:
 ```
 $ yarn start-api
 ```
-10. Untuk menjalankan website, terminal Powershell kedua dituliskan perintah:
+9. Terminal Command Prompt kedua dituliskan perintah:
 ```
 $ yarn start
 ```
+Terminal akan menampilkan URL website dari program. Salin URL tersebut dan buka pada browser yang ingin dipakai, Selamat Mencoba!
 
 ## Author
 <table>
