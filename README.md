@@ -39,9 +39,9 @@ $ git clone https://github.com/Stanley77-web/Algeo02-20028.git
 ```
 3. Buka terminal Command Prompt, kemudian arahkan direktori terminal pada folder repository seperti gambar berikut:
 
-    ![image](https://user-images.githubusercontent.com/73146752/141693651-37b17ad6-8d50-407a-8182-12a3196a065b.png)
+   ![image](https://user-images.githubusercontent.com/73146752/141693651-37b17ad6-8d50-407a-8182-12a3196a065b.png)
     
-    ![image](https://user-images.githubusercontent.com/73146752/141693306-29b73c48-1ad1-4b1d-a9b8-b2bad00716f8.png)
+   ![image](https://user-images.githubusercontent.com/73146752/141693306-29b73c48-1ad1-4b1d-a9b8-b2bad00716f8.png)
     
 4. Buatlah *virtual environment* dengan menuliskan perintah:
 ```
