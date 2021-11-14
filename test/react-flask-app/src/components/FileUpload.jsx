@@ -60,7 +60,7 @@ class FileUpload extends React.Component {
       }
       fetch('http://localhost:5000/upload', config)
       .then(() => {
-        const postcompressionsrc = 'converted_'.concat(this.uploadInput.files[0].name);
+        const postcompressionsrc = 'compress'.concat(this.uploadInput.files[0].name);
         var endDate = (Date.now() - startDate)/1000; 
         this.setState({
           compressed: "http://127.0.0.1:5000/view/".concat(postcompressionsrc),
@@ -100,10 +100,10 @@ class FileUpload extends React.Component {
               <input class="value" type="number" id="ratio" name="ratio" min="1" max="100" value={this.state.value} onChange={(event) => {this.handleValueChange(event)}}></input>
               {/* <text>{this.state.value}</text> */}
             </div>
-            <div class="inputCheck">
+           {/* <div class="inputCheck">
               <input type="checkbox" onChange={this.handleCheckbox} value="true"></input>
               <text>Check to transparent the background</text>
-            </div>
+            </div> */}
           </form>
         {/* {imageForm} */}
         <div class="container">

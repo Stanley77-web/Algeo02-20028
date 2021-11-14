@@ -11,8 +11,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('API Called')
 
 
-UPLOAD_FOLDER = '../src/components/static/user_uploaded'
-DOWNLOAD_FOLDER = '../public/'
+UPLOAD_FOLDER = '../src/components/static/user_uploaded/'
+DOWNLOAD_FOLDER = '../src/components/static/user_uploaded/'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 app = Flask(__name__)

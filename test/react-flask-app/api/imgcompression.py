@@ -1,16 +1,16 @@
 import numpy as np
+from numpy.core.fromnumeric import compress
 import numpy.linalg
 from PIL import Image
-import sys
+# from datetime import datetime
+# import sys
 import os
-
 
 def CompressSVD(channelDataMatrix, k, total_k):
     U, S, VT = SVD(channelDataMatrix, total_k)
     A = U[:, 0:k] @ S[0:k, 0:k] @ VT[0:k, :]
     compressed = np.clip(A, 0, 255).astype('uint8')
     return compressed
-
 
 def SVD(matrix, k):
     b, k = matrix.shape
@@ -50,23 +50,24 @@ def SVD(matrix, k):
         SVT = S @ VT
         inv = np.linalg.inv(SVT)
         U = matrix @ inv
+    print("Lagi jalan ajg")
     return U, S, VT
-
 
 # PROGRAM UTAMA
 def mainCompress(file, ratioStr):
     ratio = float(ratioStr)
-    print("[] ================================================= []")
-    print("imgcompression called, will now work at file: " + file + " at ratio " + str(ratio) + ".")
+    # startTime = datetime.now()
+    # print("[] ================================================= []")
+    # print("imgcompression called, will now work at file: " + file + " at ratio " + str(ratio) + ".")
     # file = str(input("Masukkan nama file: "))
     # ratio = float(input("Masukkan rasio: "))
     # path = 'wat.png'
     # ratio = 5
-    sys_path = sys.path[0]
+    # sys_path = sys.path[0]
 
-    load_path = "../src/components/static/user_uploaded/" + file
-    path = os.path.join(sys_path, load_path)
-
+    # load_path = "../src/components/static/user_uploaded/" + file
+    # # path = os.path.join(sys_path, load_path)
+    path = "../src/components/static/user_uploaded/" + file
     pic = Image.open(path)
     fileFormat = pic.format
     if(fileFormat != "JPEG"):
@@ -97,15 +98,19 @@ def mainCompress(file, ratioStr):
     else:
         newImage = Image.merge("RGB", (redImage, greenImage, blueImage))
     print("Compression Rate: " + str(round(ratio, 2)))
-    save_path = "../public/" + "converted_" + file
-    path = os.path.join(sys_path, save_path)
-    if os.path.exists(path):
-        os.remove(path)
-        if os.path.exists(path):
-            print("")
-    newImage.save(path)
-    # print(newImage.size)
-    print("[] ================================================= []")
+    new_path = "../src/components/static/user_uploaded/" + "compress" + file
+    # save_file = "compress" + file
+    # save_path = "../public/hasil/" + "converted_" + file
+    # path = os.path.join(sys_path, save_path)
+    if os.path.exists(new_path):
+        os.remove(new_path)
+    #     if os.path.exists(path):
+    #         print("")
+    newImage.save(new_path)
+    # # print(newImage.size)
+    # time = datetime.now() - startTime
+    # print(f"{time.total_seconds():.0f} Seconds")
+    # print("[] ================================================= []")
 
 # Menjalankan Program
 # mainCompress()
@@ -125,13 +130,11 @@ def mainCompress(file, ratioStr):
 # import sys
 # import os
 
-
 # def CompressSVD(channelDataMatrix, k, total_k):
 #     U, S, VT = SVD(channelDataMatrix, total_k)
 #     A = U[:, 0:k] @ S[0:k, 0:k] @ VT[0:k, :]
 #     compressed = np.clip(A, 0, 255).astype('uint8')
 #     return compressed
-
 
 # def SVD(matrix, k):
 #     b, k = matrix.shape
@@ -172,7 +175,6 @@ def mainCompress(file, ratioStr):
 #         inv = np.linalg.inv(SVT)
 #         U = matrix @ inv
 #     return U, S, VT
-
 
 # # PROGRAM UTAMA
 # def mainCompress(file, ratioStr):
@@ -215,3 +217,4 @@ def mainCompress(file, ratioStr):
 #     save_path = "../public/" + "converted_" + file
 #     path = os.path.join(sys_path, save_path)
 #     newImage.save(path)
+
