@@ -4,7 +4,7 @@
 ## Daftar Isi
 * [Informasi Umum](#informasi-umum)
 * [Teknologi Digunakan](#teknologi-digunakan)
-* [Screenshots](#tampilan-website)
+* [Tampilan Website](#tampilan-website)
 * [Setup](#setup)
 * [Penulis](#penulis)
 <!-- * [License](#license) -->
