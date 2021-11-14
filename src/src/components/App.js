@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import FileUpload from './FileUpload.jsx';
-// import bg from "../user_uploaded/bg.png";
 
 function App() {
   // const [currentTime, setCurrentTime] = useState(0);
@@ -26,7 +25,7 @@ function App() {
     <div class="all-page">
       <h1 class="main-title">waifu0.5x</h1>
       <ColoredLine color="black" height="3" ></ColoredLine>
-      <text class="shortdesc"><br></br>Single-Image Anime-Style Art downsizing using Singular Value Decomposition. And it supports other photos, if you're in to that.</text>
+      <text class="shortdesc"><br></br>Single-Image Anime-Style Art downsizing using Singular Value Decomposition. And it supports other photos, if you're into that.</text>
       <FileUpload></FileUpload>
     </div>
   );
