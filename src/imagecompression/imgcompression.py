@@ -6,47 +6,51 @@ import sys
 import os
 
 
-def CompressSVD(channelDataMatrix, k, total_k):
-    U, S, VT = SVD(channelDataMatrix, total_k)
+def CompressChannel(channelMatrix, k, eigen_total):
+    """
+    Menghasilkan matriks hasil kompresi menggunakan algoritma SVD.
+    """
+    U, S, VT = SVD(channelMatrix, eigen_total)
     A = U[:, 0:k] @ S[0:k, 0:k] @ VT[0:k, :]
     compressed = np.clip(A, 0, 255).astype('uint8')
     return compressed
 
 
 def SVD(matrix, k):
-    b, k = matrix.shape
-    # Jika jumlah baris matrix < jumlah kolom matrix
-    if(b <= k):
+    """
+    Menghasilkan komponen SVD dengan menggunakan konsep power iteration serta konsep perkalian matriks invers.
+    """
+    # KAMUS LOKAL
+    baris, kolom = matrix.shape  # baris dan kolom matriks
+
+    # ALGORITMA
+    if(baris <= kolom):
         A = matrix @ matrix.T
-        n = b
-    # Jika jumlah baris matrix > jumlah kolom matrix
-    elif(b > k):
+        n = baris
+    elif(baris > kolom):
         A = matrix.T @ matrix
-        n = k
-    # Menggunakan skema simultaneous power iteration
+        n = kolom
+    # Algoritma QR
     Q = np.random.rand(n, k)
     Q, _ = np.linalg.qr(Q)
-    for i in range(50):
+    # Skema power iteration
+    for i in range(150):
         Z = A.dot(Q)
         Q, R = np.linalg.qr(Z)
-    # Mengambil nilai egeinvalue dari matriks R dengan terlebih dahulu
-    #   membuat nilai matriks tersebut absolut agar tidak error lalu
-    #   mengambil nilai diagonal matriks tersebut kemudian diakarkan
+    # Semua nilai singular values
     diag = np.sqrt(np.abs(np.diag(R)))
-    # Membuat nilai eigenvalue 0 menjadi 0.1 agar membuat
-    #   matriks untuk memiliki invers
+    # Mengubah nilai singular values agar memiliki invers
     for i in range(diag.shape[0]):
         if diag[i] < 1:
             diag[i] = 0.1
-    S = np.diag(diag)  # Membuat matriks persegi dari nilai diagonal eigenvalue
-    # Mendapatkan matriks singular kiri/kanan dengan persamaan invers
-    #   tergantung pada ukuran matrix awal
-    if(b <= k):
+    S = np.diag(diag)
+    # Skema perkalian matriks invers untuk mendapatkan semua komponen
+    if(baris <= kolom):
         U = Q
         US = U @ S
         inv = np.linalg.inv(US)
         VT = inv @ matrix
-    elif(b > k):
+    elif(baris > kolom):
         VT = Q.T
         SVT = S @ VT
         inv = np.linalg.inv(SVT)
@@ -56,51 +60,53 @@ def SVD(matrix, k):
 
 # PROGRAM UTAMA
 def mainCompress():
-    startTime = datetime.now()
-    file = str(input("Masukkan nama file: "))
-    ratio = float(input("Masukkan rasio: "))
+    # ALGORITMA
+    file = str(input())
+    ratio = float(input())
     sys_path = sys.path[0]
-
     load_path = "../../test/testgambar/" + file
     path = os.path.join(sys_path, load_path)
-
     pic = Image.open(path)
+
+    # Mengecek jenis gambar
     if pic.mode == "RGBA":
         alpha = pic.getchannel('A')
-    elif pic.mode == 'P':
+    elif len(pic.getbands()) == 1:
         pic = pic.convert("RGBA")
         alpha = pic.getchannel('A')
-    pixel = np.array(pic)
-    imageWidth = pixel.shape[0]
-    imageHeight = pixel.shape[1]
-    red = np.asarray(pic.getchannel('R')).astype(float)
-    green = np.asarray(pic.getchannel('G')).astype(float)
-    blue = np.asarray(pic.getchannel('B')).astype(float)
 
-    total_k = min(imageHeight, imageWidth)
+    # Ukuran width dan height gambar
+    pixel = np.array(pic)
+    width = pixel.shape[0]
+    height = pixel.shape[1]
+    # Tingkat kompresi gambar
+    total_k = min(height, width)
     new_ratio = 100 - ratio
     k = round(total_k * new_ratio / 100)
 
-    redCompressed = CompressSVD(red, k, total_k)
-    greenCompressed = CompressSVD(green, k, total_k)
-    blueCompressed = CompressSVD(blue, k, total_k)
-
+    # Konversi channel gambar menjadi matriks
+    red = np.asarray(pic.getchannel('R')).astype(float)
+    green = np.asarray(pic.getchannel('G')).astype(float)
+    blue = np.asarray(pic.getchannel('B')).astype(float)
+    # Kompresi matriks channel
+    redCompressed = CompressChannel(red, k, total_k)
+    greenCompressed = CompressChannel(green, k, total_k)
+    blueCompressed = CompressChannel(blue, k, total_k)
+    # Konversi matriks menjadi channel gambar
     redImage = Image.fromarray(redCompressed)
     blueImage = Image.fromarray(blueCompressed)
     greenImage = Image.fromarray(greenCompressed)
 
-    if pic.mode == "RGBA":
+    # Membuat gambar berdasarkan format
+    if alpha:
         newImage = Image.merge(
             "RGBA", (redImage, greenImage, blueImage, alpha))
     else:
         newImage = Image.merge("RGB", (redImage, greenImage, blueImage))
-    save_path = "../../test/testgambar/" + "converted_" + file
+    save_path = "../../test/testgambar/" + "compressed_" + file
     path = os.path.join(sys_path, save_path)
     newImage.save(path)
     print("Compression Rate: " + str(round(ratio, 2)))
-    print(newImage.size)
-    time = datetime.now() - startTime
-    print(f"{time.total_seconds():.0f} Seconds")
 
 
 # Menjalankan Program
